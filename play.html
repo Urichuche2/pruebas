@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cargando juego | Science Bits 6x</title>
+  <link rel="stylesheet" href="config/main.css">
+  <style>
+    .game-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background-dark);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-header {
+      padding: 15px;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    #gameFrame {
+      flex: 1;
+      border: none;
+      background: black;
+    }
+    
+    .game-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-viewer">
+    <div class="game-header">
+      <h2 id="game-title">Cargando juego...</h2>
+      <button class="game-btn" id="backBtn">Volver</button>
+    </div>
+    <iframe id="gameFrame" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const gameUrl = urlParams.get('gameurl');
+    const gameTitle = urlParams.get('title');
+
+    document.getElementById('game-title').textContent = gameTitle || 'Juego';
+    document.getElementById('gameFrame').src = gameUrl;
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>

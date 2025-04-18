@@ -1,0 +1,12 @@
+{
+  "games": [
+    {
+      "id": "escape-from-prison",
+      "title": "Escape From Prison Multiplayer",
+      "description": "Juego multijugador de escape",
+      "image": "/images/escape-from-prision-multiplayer.avif",
+      "file": "../games/escape-from-prision.html",
+      "type": "iframe"
+    }
+  ]
+}
